@@ -58,9 +58,9 @@ class videoControl:
         
     def downloadVid(self):
         if self.vidLoc == '-1111':
-            print('\nERROR: File is empty!!! Seems that there is nothing but VOID in there.\n')
+            print('\nERROR: File is empty!!! Seems that there is nothing but VOID.\n')
         elif self.vidLoc == '-9999':
-            print('\nERROR: The file was not where. Maybe it took the wrong BUS?!\n')
+            print('\nERROR: The file was not there. Maybe it took the wrong BUS?!\n')
         elif self.vidLoc == '-0000':
             print('\nERROR: Lacking the path to the file. If you wanna go somewhere, you\'ve to tell me!!!')
         else:
