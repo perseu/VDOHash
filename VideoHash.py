@@ -120,10 +120,9 @@ if __name__ == '__main__':
         if frame is not None:
             blkconst.frameHash(frame)
         else:
-            print('\nFrame is empty')
+            print('\nFinished computing the hash of the video.')
         
         if not(ret):
-            print('\nDumping chain!\n')
             chainres = blkconst.dumpChain()
             break
         
@@ -148,8 +147,9 @@ if __name__ == '__main__':
             for ii in range(len(chainres)):
                 if chainres[ii][2] != (refhashes[ii]).split()[2]:
                     invalid = ii
+                    print('\nALERT: Video check failed in frame '+ str(invalid) + '\n')
             if invalid > 0:
-                print('\n\nALERT: Video check failed in frame '+ invalid + '\n')
+                print('\n\nALERT: This video file does not match the reference file!!!')
             else:
                 print('\n\nVideo file is verified!!!\n\n')
                 
