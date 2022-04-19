@@ -146,10 +146,13 @@ if __name__ == '__main__':
         else:
             for ii in range(len(chainres)):
                 if chainres[ii][2] != (refhashes[ii]).split()[2]:
+                    if invalid == 0:
+                        finvalid = ii
                     invalid = ii
-                    print('\nALERT: Video check failed in frame '+ str(invalid) + '\n')
+
+                    print('ALERT: Video check failed in frame '+ str(invalid))
             if invalid > 0:
-                print('\n\nALERT: This video file does not match the reference file!!!')
+                print('\n\nALERT: This video file does not match the reference file!!!\nALERT: The differences start on frame ' + str(finvalid))
             else:
                 print('\n\nVideo file is verified!!!\n\n')
                 
