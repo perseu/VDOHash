@@ -58,9 +58,9 @@ class videoControl:
         
     def downloadVid(self):
         if self.vidLoc == '-1111':
-            print('\nERROR: File is empty!!! Seems that there is nothing but VOID in there.\n')
+            print('\nERROR: File is empty!!! Seems that there is nothing but VOID.\n')
         elif self.vidLoc == '-9999':
-            print('\nERROR: The file was not where. Maybe it took the wrong BUS?!\n')
+            print('\nERROR: The file was not there. Maybe it took the wrong BUS?!\n')
         elif self.vidLoc == '-0000':
             print('\nERROR: Lacking the path to the file. If you wanna go somewhere, you\'ve to tell me!!!')
         else:
@@ -83,9 +83,8 @@ if __name__ == '__main__':
     # o - Hash output file.
     # i - Input hash reference file.
     # h - Help
-    args = sys.argv
     
-#    args = ['batch.py','t=testvideo.MP4', 'i=test_output.txt']
+    args = sys.argv
     
     for argument in args:
         argtemp = argument.split('=')
@@ -121,10 +120,9 @@ if __name__ == '__main__':
         if frame is not None:
             blkconst.frameHash(frame)
         else:
-            print('\nFrame is empty')
+            print('\nFinished computing the hash of the video.')
         
         if not(ret):
-            print('\nDumping chain!\n')
             chainres = blkconst.dumpChain()
             break
         
@@ -149,8 +147,9 @@ if __name__ == '__main__':
             for ii in range(len(chainres)):
                 if chainres[ii][2] != (refhashes[ii]).split()[2]:
                     invalid = ii
+                    print('\nALERT: Video check failed in frame '+ str(invalid) + '\n')
             if invalid > 0:
-                print('\n\nALERT: Video check failed in frame '+ invalid + '\n')
+                print('\n\nALERT: This video file does not match the reference file!!!')
             else:
                 print('\n\nVideo file is verified!!!\n\n')
                 
